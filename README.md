@@ -1,1 +1,3 @@
-# PNA
+# PNA Progressive Neighborhood Aggregation for Semantic Segmentation Refinement
+
+The code is coming soon ...
