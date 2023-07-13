@@ -1,0 +1,59 @@
+_BASE_: "./Base-RCNN-DilatedC5.yaml"
+MODEL:
+  META_ARCHITECTURE: "PNASemanticSegmentor"
+  BACKBONE: 
+    NAME: "build_resnet_deeplab_backbone"
+    FREEZE_AT: 0  
+  RESNETS:
+    DEPTH: 101
+    NORM: "SyncBN"
+    RES5_MULTI_GRID: [1, 2, 4]
+    STEM_TYPE: "deeplab"
+    STEM_OUT_CHANNELS: 128
+    STRIDE_IN_1X1: False
+  SEM_SEG_HEAD:
+    NAME: "PNASemSegHead" 
+    COARSE_SEM_SEG_HEAD_NAME: "DeepLabV3_PNA_Head" 
+    IN_FEATURES: ["res5"]
+    ASPP_CHANNELS: 256
+    ASPP_DILATIONS: [6, 12, 18]
+    ASPP_DROPOUT: 0.1 
+    COMMON_STRIDE: 16
+    NUM_CLASSES: 19
+    NORM: "SyncBN"
+    CONVS_DIM: 256
+  PNA_HEAD: 
+    IN_FEATURES: ["res2", "res3", "res4", "res5"] 
+    COMMON_STRIDE: 4
+    EMBED_DIMS: [96, 192, 384, 768]
+    WINDOW_SIZE: [9, 9, 9, 9]
+    NUM_CLASSES: 19
+    LOSS_WEIGHT: 0.1
+
+DATASETS:
+  TRAIN: ("cityscapes_fine_sem_seg_train",)
+  TEST: ("cityscapes_fine_sem_seg_val",)
+
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.0001
+  MAX_ITER: 90000
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  WEIGHT_DECAY: 0.01
+  OPTIMIZER: "ADAMW"
+  LR_SCHEDULER_NAME: "WarmupPolyLR"
+  BACKBONE_MULTIPLIER: 1.0
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: True
+  
+TEST:
+  EVAL_PERIOD: 9000 
+      
+DATALOADER:
+  NUM_WORKERS: 10
