@@ -2,7 +2,7 @@
 
 "[PNA Progressive Neighborhood Aggregation for Semantic Segmentation Refinement](https://ojs.aaai.org/index.php/AAAI/article/view/25262/25034)"
 
-In this branch, we provide the implemented based on Detectron2, and the code based on MMsegmentation is coming soon ...
+In this branch, we provide the code based on Detectron2, and the code based on MMsegmentation is coming soon ...
 
 ## Installation
 1. Install Detectron2 following [the instructions](https://detectron2.readthedocs.io/tutorials/install.html).
