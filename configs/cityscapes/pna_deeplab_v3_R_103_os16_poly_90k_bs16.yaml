@@ -1,9 +1,0 @@
-_BASE_: ./Base-PNA-DeepLabV3-OS16.yaml
-MODEL:
-  WEIGHTS: "detectron2://DeepLab/R-103.pkl"
-  PIXEL_MEAN: [123.675, 116.280, 103.530]
-  PIXEL_STD: [58.395, 57.120, 57.375] 
-  RESNETS:
-    DEPTH: 101 
-  SEM_SEG_HEAD: 
-    CONVS_DIM: 256  

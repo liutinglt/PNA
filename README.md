@@ -2,10 +2,16 @@
 
 "[PNA Progressive Neighborhood Aggregation for Semantic Segmentation Refinement](https://ojs.aaai.org/index.php/AAAI/article/view/25262/25034)"
 
-In this branch, we provide the code based on Detectron2, and the code based on MMsegmentation is coming soon
+In this branch, we provide the code based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation), the experiments on Pascal VOC and COCOStuff10k are conducted using this code. And we also provide the code based on [Detectron2](https://detectron2.readthedocs.io/tutorials/install.html). 
 
 ## Installation
-1. Install Detectron2 following [the instructions](https://detectron2.readthedocs.io/tutorials/install.html).
+1. Install MMsegmentation
+
+```bash 
+cd pna
+pip install mmcv-full==1.6.0
+pip install -v -e .
+```
 
 2. Install NATTEN, [Neighborhood Attention Extension](https://github.com/SHI-Labs/NATTEN)  
 
@@ -15,26 +21,23 @@ pip install -e .
 ```
 ## Prepare the datasets
 ```bash
- ln -s your_data_dir ./datasets
+ ln -s your_data_dir ./data
 ``` 
-## Download trained models from [google drive](https://drive.google.com/drive/folders/1V5dKfoylfk_wX-UWVst6Ta5ci84c-Kbo?usp=sharing)
+## Download trained models from [google drive](https://drive.google.com/drive/folders/1vAVvQIc1IxealP-u31Z9DRFQUBnjWuMp?usp=sharing)
 
 
-## Training &  Testing & Visualizing
+## Training &  Testing
 
 #### We have provided the corresponding scripts, just modify it accordingly. 
 
-<strong>To train a model with 4 GPUs run: </strong>
+<strong>To train a model run: </strong>
 ```bash
 sh train.sh
 ``` 
 <strong> Testing</strong>
 ```bash
 sh test.sh
-``` 
-<strong> Visualizing </strong>
-```bash
-sh demo.sh
+```  
 ```
  
 ## <a name="CitingPNA"></a>Citing PNA

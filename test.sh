@@ -1,7 +1,12 @@
+ 
+EXP='pna-deeplabv3_r50-d16_512x512_40k_cocostuff10k'
+CONFIG_FILE='configs/pna/'${EXP}'.py'
+CHECKPOINT_FILE='work_dirs/cocostuff10k_pna_deeplabv3_r50.pth' 
+ 
 
-EXP="pna_fpn_R_52_poly_8k_bs16"
-DATASET="trans10k"
-CUDA_VISIBLE_DEVICES=0,1,2,3  python train_net.py \
---num-gpu 4 \
---config-file configs/${DATASET}/${EXP}.yaml \
- --eval-only MODEL.WEIGHTS /home/ubuntu/code/detectron_new/projects/PNA/aaai_out/model_final.pth 
+PORT=29501 CUDA_VISIBLE_DEVICES=0,1,2,3  bash tools/dist_test.sh \
+ ${CONFIG_FILE} ${CHECKPOINT_FILE} 4 \
+ --eval 'mIoU'
+
+
+

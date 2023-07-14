@@ -1,7 +1,10 @@
+EXP='pna_deeplabv3_r101-d16_512x512_20k_voc'
+CONFIG_FILE='configs/pna/'${EXP}'.py'
+WORK_DIR='work_dirs/voc/'${EXP}
 
-EXP="pna_fpn_R_52_poly_8k_bs16"
-DATASET="trans10k"
-CUDA_VISIBLE_DEVICES=0,1,2,3 python train_net.py \
---config-file configs/${DATASET}/${EXP}.yaml \
---num-gpus 4 \
-OUTPUT_DIR output/${DATASET}/${EXP}/\
+PORT=29503 CUDA_VISIBLE_DEVICES=0,1 bash tools/dist_train.sh \
+                            ${CONFIG_FILE} \
+                            2  \
+                            --seed 0 \
+                            --work-dir ${WORK_DIR} 
+ 
