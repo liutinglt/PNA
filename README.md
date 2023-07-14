@@ -1,4 +1,4 @@
-# [PNA](https://ojs.aaai.org/index.php/AAAI/article/view/25262/25034) in Detectron2
+# [PNA](https://ojs.aaai.org/index.php/AAAI/article/view/25262/25034) in MMsegmentation
 
 "[PNA Progressive Neighborhood Aggregation for Semantic Segmentation Refinement](https://ojs.aaai.org/index.php/AAAI/article/view/25262/25034)"
 
