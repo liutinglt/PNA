@@ -31,14 +31,15 @@ pip install -e .
 #### We have provided the corresponding scripts, just modify it accordingly. 
 
 <strong>To train a model run: </strong>
+
 ```bash
 sh train.sh
 ``` 
 <strong> Testing</strong>
+
 ```bash
 sh test.sh
-```  
-```
+```   
  
 ## <a name="CitingPNA"></a>Citing PNA
 
