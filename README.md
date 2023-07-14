@@ -19,7 +19,7 @@ pip install -v -e .
 cd NATTEN
 pip install -e .
 ```
-## Prepare the datasets
+## Prepare the datasets following [mmsegmentation](https://mmsegmentation.readthedocs.io/en/latest/user_guides/2_dataset_prepare.html)
 ```bash
  ln -s your_data_dir ./data
 ``` 
